@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { sendMessage } from "../socketApi";
 import styles from "./styles.module.css";
 
 function ChatForm() {
@@ -6,6 +7,8 @@ function ChatForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(message);
+    sendMessage(message);
     setMessage("");
   };
 
