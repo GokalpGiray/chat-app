@@ -13,3 +13,12 @@ export const init = () => {
 export const sendMessage = (message) => {
     if (socket) socket.emit("new-message", message);
 }
+
+export const subscribeChat = (cb) => {
+    if (!socket) return;
+
+    socket.on("receive-message", (message) => {
+        console.log("Yeni Mesaj Var!", message);
+        cb(message);
+    });
+};
